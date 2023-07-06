@@ -1,0 +1,128 @@
+Python day 5 lesson plan
+
+# ## To use the file structure in python we first have to open a file to create it
+
+# f = open("first_file.txt", "w")
+# f.close()
+
+# ## What we just did s create a file, but it has no data in it.
+# ## Why must we close a file when we are done?
+#     ## In general, the system should close the file automatically,
+#     ## However if it doesn't then you risk of losing the data.
+#     ## This is because when you send the "write" command, the operating
+#     ## system doesnt write at that moment, it may pause and wait before doing so
+#     ## which can lead to unpredicatable behavior. When we send the "close"
+#     ## command, the OS writes to the file as well as saves the file and closes it.
+
+# ## Lets create a new file and add data to it
+
+# f = open("a_file.txt", "w")
+# f.write("This is the data we are putting in a file.")
+# f.close()
+# print("File created")
+
+# ## We use the "w" to denote that we are writing to a file.
+# ## How do you think we denote only reading a file without editing its data?
+#     ## We use "r" to denote read only.
+
+# f = open("a_file.txt", "r")
+# contents = f.read()
+# print(contents)
+# f.close
+
+# ## What we did is told the system to read the file and store its contents 
+# ## inside of the string variable "contents".
+
+# ## What happens if we try to write to a file while in read only mode?
+#     ## Let's see:
+
+# f = open("a_file.txt", "r")
+# f.write("I am going to attempt write to this file.")
+# f.close()
+
+# ## Notice how we get the error "not writable"
+
+# ## Sometimes we need to add data to a file without overwriting the data currently
+# ## stored in the file. To do this we use "a" for "append"
+
+# f = open("a_file.txt", "a")
+# f.write("\nWe added this to the file!")
+# f.close()
+
+# ## Note that I used \n to tell the system to add my appended data onto a new line.
+
+# ## Of course we need to then switch back to "read" mode to view the contents.
+
+# f = open("a_file.txt", "r")
+# stuff = f.read()
+# print(stuff)
+
+# ## Finaly, if you would like to write to a file, but are unsure if a file of that
+# ## name exists, you can use "x" instead of "w".
+
+# f = open("a_file.txt", "x")
+# f.write("This file exists")
+# f.close()
+
+
+
+
+## Now lets move on to For-Loops
+## We use these to take a block of code an iterate, or repeat it.
+
+# cars = ["Jeep", "Toyota", "Ford", "Ram"]
+# for car in cars:
+#     print(f"This car brand is {car}")
+
+## What we did is establish a list and then used a for-loop to work 
+## through and input each item in that list into a sentence. Once every item 
+## was displayed, the loop was complete and it ended.
+
+## We can even use a for-loop to do arithmetic
+
+# multiplier = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+# for number in multiplier:
+#     print(f"{number} multiplied by 2 equals {number * 2}")
+
+## We can also use a range
+# for num in range(1,10):
+#     print(num)
+
+## Notice how the print starts at one but ends at 9 so if we wanted to print
+## numbers 1 through 10 we would need to change it to this:
+
+# for num in range(1,11):
+#     print(num)
+
+## This is because the logic has the range run from 1 all the way up to 10, but
+## stops just before 10.
+
+## A more complex example from the hands on material:
+
+# fruits = ["strawberry", "raspberry", "blueberry", "grape", "mango", "melon"]
+# berryCount = 0
+# for fr in fruits:
+#     if fr.endswith("berry"):
+#         berryCount += 1
+# print("I've finished counting the fruits.")
+# print(f"There were {berryCount} that ended with berry.")
+
+## We can even make a list within a list
+
+# fruits = [["Blueberry", "blue", 3.00], ["Strawberry", "red", 4.50], 
+#           ["Blackberry", "purple", 5.00]]
+
+# for name, color, price in fruits:
+#     print(f"The {name} is the color {color} and costs ${price:.2f} per pound.")
+
+## Let's add onto this. 
+
+# fruitPounds = int(input("How many pounds of each fruit would you like to buy?"))
+# for name, color, price in fruits:
+#     totalPrice = fruitPounds * price 
+#     print(f"{fruitPounds} of {name} costs ${totalPrice:.2f}")
+
+## We prompted the user to input how many they would like to buy and then
+## we calculated how much that would cost.
+## Take note of the fact we used :.2f to ensure that there were two zeros
+## after the decimal.
