@@ -30,7 +30,7 @@
 # num = int(input("What number (Between 1 and 20) would you like the computer to try and guess?"))
 # guess = 0
 # while guess != num:
-#     guess = random.choice(range(1,11))
+#     guess = random.choice(range(1,21))
 #     print(f"I'm guessing {guess}")
 #     time.sleep(.5)
 # print(f"{guess} was correct!")
