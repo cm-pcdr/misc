@@ -1,0 +1,6 @@
+### Fundamentals of Python Coding: 
+
+Before we get into the exercises, we should go over some basics of python. 
+Let's start with your first string. A string is a list of characters in quotations that are used to transmit textual data to the user of the program. 
+We are going to use the Print() function to transmit a message to a user using a string. Type the following into VS Code: 
+
