@@ -1,0 +1,47 @@
+import marimo as mo
+
+slider = mo.ui.slider(1, 10)
+
+mo.md(f"""
+This is how to make a simple adjustable slider.
+
+**slider = mo.ui.slider(1, 10)**
+
+{slider}
+
+As you can see, we set the parameters to show between 1 and 10
+""")
+
+mo.md("#Example 2: Slider.value")
+
+mo.md(f"""
+Now lets change the sliders appearance using slider.value
+{slider}
+
+**">" * slider.value**
+
+**{">" * slider.value}**
+
+By using slider.value we can change the shape to different characters.
+
+""")
+
+mo.md("#Example 3: Radio button")
+
+radiobuttons = mo.ui.radio(
+    options=["93.9 Bob FM", "99.5 WKXC FM", "88.3 WAFJ FM"], label="Radio Stations"
+)
+
+mo.md(f"""
+
+Now we are going to create some radio station buttons.
+
+**radiobuttons = mo.ui.radio(
+    options=["93.9 Bob FM", "99.5 WKXC FM", "88.3 WAFJ FM"], label="Radio Stations
+)**
+
+{radiobuttons}
+
+mo.ui.radio lets us create multiple buttons. The 'Label' allows us to title the buttons. 
+
+""")
