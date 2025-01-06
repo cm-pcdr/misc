@@ -8,36 +8,48 @@ app = marimo.App(width="medium")
 def __():
     import marimo as mo
     from paragradio.v2025_02 import PSK_Tx_loop
-    import numpy as np
-    return PSK_Tx_loop, mo, np
+    return PSK_Tx_loop, mo
 
 
 @app.cell
-def __(PSK_Tx_loop, np):
-    phaser = PSK_Tx_loop(modulation="BPSK")
-    phaser.start()
-    data = np.array([1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1])
-    phaser.set_data(data)
-    # phaser.set_amplitude(1)
-    phaser.set_if_gain(32)
-    return data, phaser
+def __(PSK_Tx_loop):
+    psk = PSK_Tx_loop(modulation="DQPSK")
+    psk.start()
+    return (psk,)
 
 
 @app.cell
-def __():
-    # data = np.array([1, 0, 1, 1])
-    # dq = PSK_Tx_loop(modulation="BPSK")
-    # dq.set_data(data)
-    # # dq.set_amplitude(1)
-    # dq.start()
+def __(psk):
+    data = [1, 0, 1, 1]
+    psk.set_data(data)
+    psk.set_amplitude(0.8)
+    sr = 4e6
+    return data, sr
 
 
+@app.cell
+def __(mo):
+    cfslider = mo.ui.slider(start=2.501e9, stop=2.505e9, step=1e6, value=2.503e9, label="Center Frequency Slider", show_value=True)
+    return (cfslider,)
+
+
+@app.cell
+def __(cfslider):
+    cfslider, f"{cfslider.value/1e9} GHz"
     return
 
 
 @app.cell
-def __():
-    # dq.set_if_gain(46)
+def __(mo):
+    IFSlider = mo.ui.slider(start=0, stop=40, step=8, value=32, show_value=True, label="IF Gain Slider")
+    IFSlider
+    return (IFSlider,)
+
+
+@app.cell
+def __(IFSlider, cfslider, psk):
+    psk.set_center_freq(cfslider.value)
+    psk.set_if_gain(IFSlider.value)
     return
 
 
